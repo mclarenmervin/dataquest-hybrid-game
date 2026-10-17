@@ -4,7 +4,11 @@ Cross-platform detective puzzle game built with Unity and C# for Android and Web
 
 ## Project status
 
-Repository initialized. Unity gameplay source and a playable build have not yet been added. The previously prepared Unity starter archive was unavailable during repository setup.
+The repository now contains a Unity foundation and a first web MVP. The web MVP uses the evidence-based question format from `DataQuest_150_Evidence_Wise_MCQ.docx` and currently seeds the first five questions for the gameplay loop.
+
+## Run the web MVP
+
+Open `web/index.html` in a browser, or serve the repository with any static server. Create a local investigator account, answer questions for 20 points, and spend 50 points to reveal a hint. Login and score are persisted in browser local storage for this prototype.
 
 ## Planned gameplay
 
