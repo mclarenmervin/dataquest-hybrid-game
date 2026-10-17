@@ -1,10 +1,11 @@
-const questions=[
+/* Question bank is loaded from questions.js. */
+/*
 {q:'How many records are in the uploaded dataset?',e:'Dataset snapshot: Rows 1,330; columns 15.',a:['1,030','1,330','1,630','13,300'],c:1,x:'The dataset contains 1,330 data rows.'},
 {q:'What is the total revenue across all records?',e:'Overall KPI: Total revenue 1,703,622,398.11.',a:['170,362,239.81','1,201,946,349.79','1,703,622,398.11','501,676,048.32'],c:2,x:'The revenue KPI is 1,703,622,398.11.'},
 {q:'What is the overall profit margin?',e:'Overall KPI: Profit 501,676,048.32; Revenue 1,703,622,398.11.',a:['19.45%','25.10%','29.45%','39.45%'],c:2,x:'Profit divided by revenue is 29.45%.'},
 {q:'How many countries appear in the dataset?',e:'Dataset briefing: Countries 48; item types 12.',a:['12','24','48','84'],c:2,x:'There are 48 countries.'},
 {q:'Why should 2017 totals be treated carefully?',e:'Order dates run from 01 Jan 2010 to 23 Jul 2017.',a:['It has no orders','It is a partial year','It has the most rows','It uses a different currency'],c:1,x:'2017 is only a partial year through July.'}
-];
+]; */
 let user=JSON.parse(localStorage.dqUser||'null'), points=+(localStorage.dqPoints||0), i=0, answered=false;
 const app=document.querySelector('#app'); const save=()=>{localStorage.dqPoints=points};
 function render(){if(!user)return auth(); const q=questions[i]; app.innerHTML=`<div class="shell"><header class="top"><div class="brand">DATA<span>QUEST</span></div><div class="pill">${points} points · ${user}<button class="secondary" style="margin-left:10px;padding:8px 11px" onclick="logout()">Exit</button></div></header><div class="grid"><section class="card hero"><div class="label">CASE FILE ${i+1} / ${questions.length}</div><div class="progress"><i style="width:${(i+1)/questions.length*100}%"></i></div><h1>${q.q}</h1><p><b>Evidence:</b> ${q.e}</p><div id="choices">${q.a.map((x,n)=>`<button class="choice" onclick="answer(${n})">${String.fromCharCode(65+n)}. ${x}</button>`).join('')}</div><div class="actions"><button class="secondary" onclick="hint()">Use hint · 50 points</button><button class="primary" onclick="next()">${i===questions.length-1?'Finish case':'Next evidence'}</button></div><div id="feedback"></div></section><aside class="card"><div class="label">YOUR INVESTIGATION</div><h2>${user}</h2><p class="label">Earn 20 points for every correct deduction. Spend 50 points to reveal a clue.</p><hr style="border-color:#26375d"><p>Streak <b>${Math.max(0,i)}</b></p><p>Accuracy <b>${answered?'100%':'—'}</b></p><p>Rank <b>${points>100?'Analyst':'Recruit'}</b></p></aside></div></div>`}
